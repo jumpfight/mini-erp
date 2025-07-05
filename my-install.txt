@@ -18,3 +18,7 @@ frontend/
 ├── src/
 │   ├── App.jsx
 │   └── components/UserList.jsx
+
+npm create vite@latest frontend --template react
+cd frontend
+npm install
