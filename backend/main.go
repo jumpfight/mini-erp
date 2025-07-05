@@ -10,7 +10,7 @@ type Message struct {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	message := Message{Text: "Halo dari Backend Go!"}
+	message := Message{Text: "Halo dari Backend Go ya!"}
 	// Tambahkan header CORS
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")

@@ -12,7 +12,7 @@ function App() {
     // fetch('http://backend:8080/api/hello')
       .then(res => res.json())
       .then(data => setMessage(data.text))
-      .catch(err => setMessage("Gagal ambil data dari Go"));
+      .catch(err => setMessage("Gagal ambil data dari Go ya"));
   }, []);
 
   return (
