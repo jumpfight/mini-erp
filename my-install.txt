@@ -1,0 +1,20 @@
+1. Setup Backend Go
+mini-erp/
+├── backend/
+│   ├── main.go
+│   ├── routes/
+│   │   └── user.go
+│   └── models/
+│       └── user.go
+
+Modul dan Dependensi
+go mod init mini-erp
+go get github.com/gorilla/mux
+go get github.com/rs/cors
+
+
+2. Setup Frontend ReactJS
+frontend/
+├── src/
+│   ├── App.jsx
+│   └── components/UserList.jsx
