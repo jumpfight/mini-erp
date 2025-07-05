@@ -3,15 +3,24 @@ version: "3.8"
 services:
   backend:
     build: ./backend
+    volumes:
+      - ./backend:/app  # ini bikin kode lokal sinkron ke container
+    command: ["air"] # untuk hot reload Go apps
     ports:
       - "8080:8080"
     networks:
       - app-network
 
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Agar node_modules tidak tertimpa volume
+    command: npm run dev
     ports:
-      - "3000:80"
+      - "3000:3000"
     depends_on:
       - backend
     networks:

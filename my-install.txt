@@ -12,6 +12,8 @@ go mod init mini-erp
 go get github.com/gorilla/mux
 go get github.com/rs/cors
 
+go run main.go <> CTRL + C
+
 
 2. Setup Frontend ReactJS
 frontend/
@@ -22,6 +24,7 @@ frontend/
 npm create vite@latest frontend --template react
 cd frontend
 npm install
+npm run dev <> CTRL + C
 
 3. Setup docker
 
@@ -69,4 +72,26 @@ npm install
 
 
 jalankan dockter desktop 
-docker-compose up --build
+docker-compose down ->remove
+docker-compose up --build ->install
+
+-> Hapus image sebelumnya dan rebuild total
+docker-compose down --volumes --remove-orphans
+docker-compose build --no-cache
+docker-compose up
+
+-> Restart Docker & DNS flush
+# Di Windows:
+net stop com.docker.service
+net start com.docker.service
+# Di Linux/macOS:
+sudo systemctl restart docker
+# Flush DNS:
+ipconfig /flushdns    # Windows
+sudo systemd-resolve --flush-caches  # Linux (systemd)
+
+
+volumes:
+      - ./backend:/app -> setiap perubahan di lokal terlihat di docker
+command: ["air"] -> gunakan air untuk hot reload go apps
+RUN -> go install github.com/air-verse/air -> install air

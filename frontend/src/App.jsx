@@ -8,11 +8,11 @@ function App() {
     //Karena React jalan di http://localhost:5173 -> 3000, 
     // dan backend Go di http://localhost:8080, 
     // jadi harus pakai full URL.
-    // fetch('http://localhost:8080/api/hello')
-    fetch('http://backend:8080/api/hello')
+    fetch('http://localhost:8080/api/hello')
+    // fetch('http://backend:8080/api/hello')
       .then(res => res.json())
       .then(data => setMessage(data.text))
-      .catch(err => setMessage("Gagal ambil data"));
+      .catch(err => setMessage("Gagal ambil data dari Go"));
   }, []);
 
   return (
