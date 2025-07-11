@@ -5,6 +5,7 @@ services:
     build: ./backend
     volumes:
       - ./backend:/app  # ini bikin kode lokal sinkron ke container
+    working_dir: /app
     command: ["air"] # untuk hot reload Go apps
     ports:
       - "8080:8080"

@@ -14,7 +14,7 @@ type Message struct {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	message := Message{Text: "Halo dari Backend Go (pakai JWT)!"}
+	message := Message{Text: "Halo dari Backend Go (pakai JWT)!!!//"}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(message)
 }
