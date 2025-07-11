@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"mini-erp/backend/internal/auth"
 	"mini-erp/backend/internal/handlers"
@@ -9,20 +8,10 @@ import (
 	"net/http"
 )
 
-type Message struct {
-	Text string `json:"text"`
-}
-
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	message := Message{Text: "Halo dari Backend Go (pakai JWT)!!!//"}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(message)
-}
-
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/login", handlers.LoginHandler)
-	mux.HandleFunc("/api/hello", auth.AuthMiddleware(helloHandler))
+	mux.HandleFunc("/api/hello", auth.AuthMiddleware(handlers.HelloHandler))
 
 	// Bungkus dengan middleware
 	handler := middleware.CorsMiddleware(mux)
