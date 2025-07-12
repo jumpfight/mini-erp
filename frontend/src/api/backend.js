@@ -28,3 +28,13 @@ export async function kirimNama(token,nama) {
   return res.json()
 }
 
+export async function ambilSummary() {
+  const res = await fetch("http://localhost:8080/api/summary", {
+    method: "GET",
+    headers: {
+        //Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+    }
+  })
+  return res.json()
+}
