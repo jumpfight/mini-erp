@@ -1,17 +1,16 @@
-import './App.css'
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './pages/Home'
-import Dashboard from './pages/Dashboard'
-import Orders from './pages/Orders'
-//import Sidebar from './components/Sidebar';
-import ResponsiveSidebar from './components/ResponsiveSidebar';
+import ResponsiveSidebar from "./components/ResponsiveSidebar";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div style={{ display: "flex" }}>
+      <div className="flex">
         <ResponsiveSidebar />
-        <div style={{ flex: 1, padding: "20px" }}>
+        <div className="flex-1 md:ml-64 p-4">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -22,5 +21,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

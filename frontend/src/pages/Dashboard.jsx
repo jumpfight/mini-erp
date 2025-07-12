@@ -10,7 +10,7 @@ const Dashboard = () => {
       ambilSummary()
         .then((data) => setSummary(data))
         .catch(() => setMessage("Gagal ambil data dari Go pakai JWT"));
-    }, [token]);
+    }, []);
 
   return (
     <div>
