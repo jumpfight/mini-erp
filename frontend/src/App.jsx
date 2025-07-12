@@ -8,7 +8,6 @@ import Orders from "./pages/Orders";
 export default function App() {
   return (
       <Routes>
-        {/* Gunakan DefaultLayout sebagai pembungkus semua halaman */}
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />

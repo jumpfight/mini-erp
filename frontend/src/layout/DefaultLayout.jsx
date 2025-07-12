@@ -34,7 +34,7 @@ const DefaultLayout = ({ children }) => {
         <div className="body flex-grow-1 px-3">
           <CContainer fluid>
             <Outlet />
-            {children}
+            
           </CContainer>
         </div>
         <CFooter className="mt-auto">Mini-ERP ©2025</CFooter>
