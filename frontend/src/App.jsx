@@ -11,7 +11,7 @@ export default function App() {
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders"  element={<Orders />} />
         </Route>
       </Routes>
   );
