@@ -20,5 +20,5 @@ func main() {
 	//mqtt.Connect()
 
 	fmt.Println("Server running on :8080")
-	http.ListenAndServe(":8080", handler)
+	http.ListenAndServe("0.0.0.0:8080", handler)
 }
