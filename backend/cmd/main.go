@@ -16,6 +16,8 @@ func main() {
 	// Bungkus dengan middleware
 	handler := middleware.CorsMiddleware(mux)
 
+	//mqtt.Connect()
+
 	fmt.Println("Server running on :8080")
 	http.ListenAndServe(":8080", handler)
 }
