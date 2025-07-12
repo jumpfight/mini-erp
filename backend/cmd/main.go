@@ -12,6 +12,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/login", handlers.LoginHandler)
 	mux.HandleFunc("/api/hello", auth.AuthMiddleware(handlers.HelloHandler))
+	mux.HandleFunc("/api/summary", handlers.DashboardHandler)
 
 	// Bungkus dengan middleware
 	handler := middleware.CorsMiddleware(mux)
