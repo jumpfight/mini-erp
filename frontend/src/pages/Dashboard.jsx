@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ambilSummary } from "../api/backend";
 
+import { CRow,CCol,CCard, CCardBody, CCardTitle, CCardText } from '@coreui/react'
+
 const Dashboard = () => {
   const [summary, setSummary] = useState({});
 
@@ -13,23 +15,34 @@ const Dashboard = () => {
     }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <div style={{ background: "#e0f7fa", padding: "20px", borderRadius: "8px" }}>
-          <h3>Users</h3>
-          <p>{summary.users}</p>
-        </div>
-        <div style={{ background: "#ffe0b2", padding: "20px", borderRadius: "8px" }}>
-          <h3>Orders</h3>
-          <p>{summary.orders}</p>
-        </div>
-        <div style={{ background: "#c8e6c9", padding: "20px", borderRadius: "8px" }}>
-          <h3>Revenue</h3>
-          <p>{summary.revenue}</p>
-        </div>
-      </div>
-    </div>
+    <CRow className="gap-3">
+      <CCol xs={12} md={4}>
+        <CCard>
+          <CCardBody>
+            <CCardTitle>Users</CCardTitle>
+            <CCardText>{summary.orders}</CCardText>
+          </CCardBody>
+        </CCard>
+      </CCol>
+
+      <CCol xs={12} md={4}>
+        <CCard>
+        <CCardBody>
+          <CCardTitle>Users</CCardTitle>
+          <CCardText>{summary.users}</CCardText>
+        </CCardBody>
+      </CCard>
+      </CCol>
+
+      <CCol xs={12} md={4}>
+        <CCard>
+          <CCardBody>
+            <CCardTitle>Revenue</CCardTitle>
+            <CCardText>{summary.revenue}</CCardText>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
   );
 };
 

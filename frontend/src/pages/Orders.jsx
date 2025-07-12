@@ -1,9 +1,25 @@
+import {
+  CContainer,
+  CForm,
+  CFormInput,
+  CButton,
+  CCard,
+  CCardBody,
+  CCardTitle,
+  CCardText,
+  CAlert,
+} from '@coreui/react'
+
 const Orders = () => {
   return (
-    <div>
-      <h1>Orders</h1>
-      <p>Coming soon...</p>
-    </div>
+        <CContainer className="py-4">
+          <CCard>
+            <CCardBody>
+              <CCardTitle>Orders</CCardTitle>
+              <CCardText>upcoming</CCardText>
+            </CCardBody>
+          </CCard>
+        </CContainer>
   );
 };
 

@@ -1,22 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ResponsiveSidebar from "./components/ResponsiveSidebar";
+import DefaultLayout from './layout/DefaultLayout'
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Orders from "./pages/Orders";
 
 export default function App() {
   return (
-    <Router>
-      <div className="flex">
-        <ResponsiveSidebar />
-        <div className="flex-1 md:ml-64 p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/orders" element={<Orders />} />
-          </Routes>
-        </div>
-      </div>
-    </Router>
+      <Routes>
+        {/* Gunakan DefaultLayout sebagai pembungkus semua halaman */}
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="orders" element={<Orders />} />
+        </Route>
+      </Routes>
   );
 }

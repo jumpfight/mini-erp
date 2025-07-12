@@ -1,5 +1,16 @@
 import { useEffect, useState } from 'react'
 import { login, fetchHello,kirimNama } from '../api/backend'
+import {
+  CContainer,
+  CForm,
+  CFormInput,
+  CButton,
+  CCard,
+  CCardBody,
+  CCardTitle,
+  CAlert,
+} from '@coreui/react'
+
 
 function Home() {
   const [message, setMessage] = useState("Memuat...");
@@ -37,26 +48,27 @@ function Home() {
   }
 
   return (
+    <CContainer className="py-4">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>Halo Form</CCardTitle>
 
-    <div className="App">
-      <h1>Frontend React</h1>
-        <div style={{ padding: "1rem" }}>
-        <h2>Halo Form</h2>
-        <form onSubmit={handleSubmit}>
-            <input
-            type="text"
-            placeholder="Masukkan nama"
-            value={nama}
-            onChange={e => setNama(e.target.value)}
+          <CForm onSubmit={handleSubmit} className="mb-3">
+            <CFormInput
+              type="text"
+              label="Masukkan Nama"
+              placeholder="Contoh: Budi"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
             />
-            <button type="submit">Kirim</button>
-        </form>
+            <CButton type="submit" color="primary" className="mt-2">Kirim</CButton>
+          </CForm>
 
-        {balasan && <p>Respon: {balasan}</p>}
-        </div>
-        
-      <p>Pesan dari Backend: <strong>{message}</strong></p>
-    </div>
+          {balasan && <CAlert color="info">Respon: {balasan}</CAlert>}
+          <p>Pesan dari Backend: <strong>{message}</strong></p>
+        </CCardBody>
+      </CCard>
+    </CContainer>
   )
 }
 
