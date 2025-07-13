@@ -15,6 +15,9 @@ import { useEffect } from 'react'
 import { CProgress, CProgressBar } from '@coreui/react'
 import { CChartBar,CChartLine } from '@coreui/react-chartjs'
 import MqttDisplay from '../components/MqttDisplay'
+import CardDefaultItem from '../components/CardDefaultItem'
+import CardProgressItem from '../components/CardProgressItem'
+import CardChartLinetItem from '../components/CardChartLineItem'
 
 const Orders = () => {
 
@@ -26,49 +29,10 @@ const Orders = () => {
 //        <CContainer className="py-3">
   //      </CContainer>
       <CRow className="g-3">
-        <CCol xs={12} md={3}>
-          <CCard style={{ minHeight: '130px' }}>
-            <CCardBody>
-              <CCardTitle>Orders</CCardTitle>
-              <CCardText>upcoming</CCardText>
-            </CCardBody>
-          </CCard>
-        </CCol>
-
-        <CCol xs={12} md={3}>
-          <CCard style={{ minHeight: '130px' }}>
-            <CCardBody>
-              <CCardTitle>MQTT</CCardTitle>
-              <CCardText>test</CCardText>
-              <MqttDisplay/>
-              <CProgress className="mt-3">
-                <CProgressBar value={80} color="info">80%</CProgressBar>
-              </CProgress>
-            </CCardBody>
-          </CCard>
-        </CCol>
-
-        <CCol xs={12} md={6}>
-          <CCard className="mb-4">
-            <CCardBody>
-              <CCardTitle>Performance</CCardTitle>
-              <CChartLine
-                data={{
-                  labels: ['1', '2', '3', '4', '5'],
-                  datasets: [
-                    {
-                      label: 'Performance',
-                      data: [65, 59, 80, 81, 56],
-                      borderColor: '#007bff',
-                      fill: false,
-                    },
-                  ],
-                }}
-              />
-
-            </CCardBody>
-          </CCard>
-        </CCol>
+        <CardDefaultItem xs="12" md="3" title="Orders" text="upcoming soon"/>
+        <CardProgressItem xs="12" md="3" title="MQTT" text="test" value={<MqttDisplay/>} progress="75"/>
+        <CardChartLinetItem xs="12" md="6" title="Performance" label="Performance" labels={['1', '2', '3', '4', '5']} 
+        datas={[65, 59, 80, 81, 56]} borderColor='#007bff' />
       </CRow>
   );
 };
