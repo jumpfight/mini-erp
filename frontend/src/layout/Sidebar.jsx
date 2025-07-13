@@ -24,9 +24,14 @@ const Sidebar = ({visible,onVisibleChange}) => {
       <CSidebarNav>
         <CNavTitle>Main</CNavTitle>
        
-        <SidebarNavItem to="/" icon={cilHome} label="Home" />
-        <SidebarNavItem to="/dashboard" icon={cilSpeedometer} label="Dashboard" />
-        <SidebarNavItem to="/orders" icon={cilUser} label="Orders" />
+        <SidebarNavItem to="/" icon={cilHome} label="Home"/>
+        <SidebarNavItem to="/dashboard" icon={cilSpeedometer} label="Dashboard"/>
+        <SidebarNavItem to="/orders" icon={cilUser} label="Orders"/>
+
+        <SidebarNavItem icon={cilUser} label="User">
+          <SidebarNavItem icon={cilUser} to="/users/list" label="User List" />
+          <SidebarNavItem icon={cilUser} to="/users/create" label="Create User" />
+        </SidebarNavItem>
 
       </CSidebarNav>
     </CSidebar>
