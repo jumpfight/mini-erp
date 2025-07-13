@@ -43,6 +43,7 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    document.title = import.meta.env.VITE_APP_NAME || 'Default App'
     const res = await kirimNama(token,nama)
     setBalasan(res.text || "Gagal respon dari server")
   }

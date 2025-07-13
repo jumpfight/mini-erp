@@ -1,6 +1,6 @@
 import React from 'react'
-import { CHeader, CContainer, CHeaderBrand, CButton } from '@coreui/react'
-import { cilMenu } from '@coreui/icons'
+import { CHeader, CContainer, CHeaderBrand, CButton, CAvatar } from '@coreui/react'
+import { cilMenu, cilUser } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
 const Header = ({ toggleSidebar }) => {
@@ -9,12 +9,17 @@ const Header = ({ toggleSidebar }) => {
       <CContainer fluid className="d-flex align-items-center">
         <CButton
           color="light"
-          className="d-lg-none me-2" // hanya tampil di < 992px
+          className="d-lg-none me-2"
           onClick={toggleSidebar}
         >
           <CIcon icon={cilMenu} size="lg" />
         </CButton>
-        <CHeaderBrand>Mini-ERP</CHeaderBrand>
+
+        <CHeaderBrand className="me-auto">{import.meta.env.VITE_APP_NAME}</CHeaderBrand>
+        
+        {/* User Avatar */}
+        <CAvatar className="border border-primary" src="/images/user0001.JPG" size="md" />
+
       </CContainer>
     </CHeader>
   )

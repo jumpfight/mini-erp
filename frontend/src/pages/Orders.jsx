@@ -9,8 +9,14 @@ import {
   CCardText,
   CAlert,
 } from '@coreui/react'
+import { useEffect } from 'react'
 
 const Orders = () => {
+
+
+useEffect(() => {
+  document.title = import.meta.env.VITE_APP_NAME || 'Default App'
+}, [])
   return (
         <CContainer className="py-4">
           <CCard>

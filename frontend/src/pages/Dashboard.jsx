@@ -9,6 +9,7 @@ const Dashboard = () => {
   useEffect(() => {
       //if (!token) return;
   
+      document.title = import.meta.env.VITE_APP_NAME || 'Default App'
       ambilSummary()
         .then((data) => setSummary(data))
         .catch(() => setMessage("Gagal ambil data dari Go pakai JWT"));
