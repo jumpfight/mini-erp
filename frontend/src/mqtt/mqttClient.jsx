@@ -4,7 +4,7 @@ const mqttUrl=import.meta.env.VITE_MQTT_URL || 'ws://localhost:9001'
 const client = mqtt.connect(mqttUrl) // pastikan broker support WebSocket
 
 client.on('connect', () => {
-  console.log('Connected to MQTT broker')
+  console.log(`Connected to MQTT broker [${mqttUrl}]`)
   client.subscribe('mytopic/data')
 })
 

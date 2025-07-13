@@ -9,6 +9,8 @@ services:
       - "9001:9001" # WebSocket, untuk React
     volumes:
       - ./mosquitto_config:/mosquitto/config
+    networks:
+      - app-network
   backend:
     build: ./backend
     volumes:
