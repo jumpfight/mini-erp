@@ -39,17 +39,20 @@ function Home() {
       .catch(() => setMessage("Gagal ambil data dari Go pakai JWT"));
   }, [token]);
 
+  useEffect(() => {
+    document.title = import.meta.env.VITE_APP_NAME || 'Default App'
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    document.title = import.meta.env.VITE_APP_NAME || 'Default App'
     const res = await kirimNama(token,nama)
     setBalasan(res.text || "Gagal respon dari server")
   }
 
   return (
-    <CContainer className="py-4">
+//    <CContainer className="py-4">
+//    </CContainer>
       <CCard>
         <CCardBody>
           <CCardTitle>Halo Form</CCardTitle>
@@ -69,7 +72,6 @@ function Home() {
           <p>Pesan dari Backend: <strong>{message}</strong></p>
         </CCardBody>
       </CCard>
-    </CContainer>
   )
 }
 

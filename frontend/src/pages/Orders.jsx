@@ -14,6 +14,7 @@ import {
 import { useEffect } from 'react'
 import { CProgress, CProgressBar } from '@coreui/react'
 import { CChartBar,CChartLine } from '@coreui/react-chartjs'
+import MqttDisplay from '../components/MqttDisplay'
 
 const Orders = () => {
 
@@ -24,17 +25,30 @@ const Orders = () => {
   return (
 //        <CContainer className="py-3">
   //      </CContainer>
-      <CRow className="gap-3">
-        <CCol xs={12} md={4}>
-          <CCard>
+      <CRow className="g-3">
+        <CCol xs={12} md={3}>
+          <CCard style={{ minHeight: '130px' }}>
             <CCardBody>
               <CCardTitle>Orders</CCardTitle>
               <CCardText>upcoming</CCardText>
             </CCardBody>
           </CCard>
         </CCol>
-        
-        <CCol xs={12} md={4}>
+
+        <CCol xs={12} md={3}>
+          <CCard style={{ minHeight: '130px' }}>
+            <CCardBody>
+              <CCardTitle>MQTT</CCardTitle>
+              <CCardText>test</CCardText>
+              <MqttDisplay/>
+              <CProgress className="mt-3">
+                <CProgressBar value={80} color="info">80%</CProgressBar>
+              </CProgress>
+            </CCardBody>
+          </CCard>
+        </CCol>
+
+        <CCol xs={12} md={6}>
           <CCard className="mb-4">
             <CCardBody>
               <CCardTitle>Performance</CCardTitle>
@@ -51,9 +65,7 @@ const Orders = () => {
                   ],
                 }}
               />
-              <CProgress className="mt-3">
-                <CProgressBar value={80} color="info">80%</CProgressBar>
-              </CProgress>
+
             </CCardBody>
           </CCard>
         </CCol>

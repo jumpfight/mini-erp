@@ -4,6 +4,8 @@ go 1.24.4
 
 require github.com/golang-jwt/jwt/v5 v5.2.2
 
+require github.com/joho/godotenv v1.5.1 // indirect
+
 require (
 	github.com/eclipse/paho.mqtt.golang v1.5.0
 	github.com/gorilla/websocket v1.5.3 // indirect
