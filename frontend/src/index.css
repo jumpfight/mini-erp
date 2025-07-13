@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Perkecil tinggi nav-link CoreUI sidebar */
+.sidebar .nav-link {
+  padding: 0.3rem 1rem !important;
+  min-height: auto !important;
+  height: auto !important;
+  font-size: 0.85rem !important;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .nav-link svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.sidebar .nav-link .nav-icon {
+  margin-right: 0.5rem;
+}
+
+a.nav-link {
+  height: 40px !important;
+  background: rgba(255, 0, 0, 0.1); /* TESTING ONLY */
+}
+

@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ResponsiveSidebar from "./components/ResponsiveSidebar";
+import { Routes, Route } from "react-router-dom";
 import DefaultLayout from './layout/DefaultLayout'
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
