@@ -8,8 +8,9 @@ import {
   CNavTitle,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilSpeedometer, cilUser } from '@coreui/icons'
+import { cilHome, cilSpeedometer, cilUser } from '@coreui/icons'
 import { Link, NavLink } from 'react-router-dom'
+import SidebarNavItem from '../components/SidebarNavItem'
 
 const Sidebar = ({visible,onVisibleChange}) => {
   //<CSidebarBrand>Mini-ERP</CSidebarBrand>
@@ -22,30 +23,10 @@ const Sidebar = ({visible,onVisibleChange}) => {
     >
       <CSidebarNav>
         <CNavTitle>Main</CNavTitle>
-        
-        <CNavLink
-          as={NavLink}
-          to="/"
-          icon={<CIcon icon={cilSpeedometer} />}
-        >
-          Home
-        </CNavLink>
-
-        <CNavLink
-          as={NavLink}
-          to="/dashboard"
-          icon={<CIcon icon={cilSpeedometer} />}
-        >
-          Dashboard
-        </CNavLink>
-
-        <CNavLink
-          as={NavLink}
-          to="/orders"
-          icon={<CIcon icon={cilUser} />}
-        >
-          Orders
-        </CNavLink>
+       
+        <SidebarNavItem to="/" icon={cilHome} label="Home" />
+        <SidebarNavItem to="/dashboard" icon={cilSpeedometer} label="Dashboard" />
+        <SidebarNavItem to="/orders" icon={cilUser} label="Orders" />
 
       </CSidebarNav>
     </CSidebar>
