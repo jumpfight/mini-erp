@@ -9,11 +9,11 @@ const MqttDisplay = () => {
       if (topic === 'mytopic/data') {
         try{
           const payload = JSON.parse(message.toString());
-          //console.log("JSON payload:", payload);
+          //console.log("JSON payload:", payload); 
           const onlyMessage = payload.time;
           setData(onlyMessage)
         }catch (e){
-          console.error("Failed to parse JSON:", e);
+          console.error("Failed to parse JSON :", e);
         }
 
       }

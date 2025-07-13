@@ -30,7 +30,9 @@ const Orders = () => {
       <CRow className="g-3">
         <CardDefaultItem xs="12" md="3" title="Orders" text="upcoming soon"/>
         <CardProgressItem xs="12" md="3" title="MQTT" text="test" value={<MqttDisplay/>} progress="75"/>
-        <CardChartLinetItem xs="12" md="6" title="Performance" label="Performance" labels={['1', '2', '3', '4', '5']} 
+        <CardChartLinetItem xs="12" md="6" title="Performance" 
+        label="Performance Chart" 
+        labels={['1', '2', '3', '4', '5']} 
         datas={[65, 59, 80, 81, 56]} borderColor='#007bff' />
       </CRow>
     </CContainer>
