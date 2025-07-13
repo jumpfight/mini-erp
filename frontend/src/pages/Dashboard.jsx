@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { ambilSummary } from "../api/backend";
 
-import { CRow,CCol,CCard, CCardBody, CCardTitle, CCardText } from '@coreui/react'
+import { CRow,CCol,CCard, CCardBody, CCardTitle, CCardText, CContainer } from '@coreui/react'
+import CardDefaultItem from "../components/CardDefaultItem";
 
 const Dashboard = () => {
   const [summary, setSummary] = useState({});
@@ -16,36 +17,13 @@ const Dashboard = () => {
     }, []);
 
   return (
-    <CRow className="gap-3">
-      <CCol xs={12} md={4}>
-        <CCard>
-          <CCardBody>
-            <CCardTitle>Users</CCardTitle>
-            <CCardText>{summary.orders}</CCardText>
-          </CCardBody>
-        </CCard>
-      </CCol>
-
-      <CCol xs={12} md={4}>
-        <CCard>
-        <CCardBody>
-          <CCardTitle>Users</CCardTitle>
-          <CCardText>{summary.users}</CCardText>
-        </CCardBody>
-      </CCard>
-      </CCol>
-
-      <CCol xs={12} md={4}>
-        <CCard>
-          <CCardBody>
-            <CCardTitle>Revenue</CCardTitle>
-            <CCardText>{summary.revenue}</CCardText>
-          </CCardBody>
-        </CCard>
-      </CCol>
-
-      
-    </CRow>
+    <CContainer className="px-0 py-0">
+      <CRow className="g-3">
+        <CardDefaultItem xs="12" md="4" title="Orders" text={summary.orders}/>
+        <CardDefaultItem xs="12" md="4" title="Users" text={summary.users}/>
+        <CardDefaultItem xs="12" md="4" title="Revenue" text={summary.revenue}/>      
+      </CRow>
+    </CContainer>
   );
 };
 

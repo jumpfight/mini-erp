@@ -51,27 +51,27 @@ function Home() {
   }
 
   return (
-//    <CContainer className="py-4">
-//    </CContainer>
-      <CCard>
-        <CCardBody>
-          <CCardTitle>Halo Form</CCardTitle>
+      <CContainer className="px-0 py-0">
+        <CCard>
+          <CCardBody>
+            <CCardTitle>Halo Form</CCardTitle>
 
-          <CForm onSubmit={handleSubmit} className="mb-3">
-            <CFormInput
-              type="text"
-              label="Masukkan Nama"
-              placeholder="Contoh: Budi"
-              value={nama}
-              onChange={(e) => setNama(e.target.value)}
-            />
-            <CButton type="submit" color="primary" className="mt-2">Kirim</CButton>
-          </CForm>
+            <CForm onSubmit={handleSubmit} className="mb-3">
+              <CFormInput
+                type="text"
+                label="Masukkan Nama"
+                placeholder="Contoh: Budi"
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
+              />
+              <CButton type="submit" color="primary" className="mt-2">Kirim</CButton>
+            </CForm>
 
-          {balasan && <CAlert color="info">Respon: {balasan}</CAlert>}
-          <p>Pesan dari Backend: <strong>{message}</strong></p>
-        </CCardBody>
-      </CCard>
+            {balasan && <CAlert color="info">Respon: {balasan}</CAlert>}
+            <p>Pesan dari Backend: <strong>{message}</strong></p>
+          </CCardBody>
+        </CCard>
+      </CContainer>
   )
 }
 
