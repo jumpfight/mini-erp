@@ -9,7 +9,7 @@ client.on('connect', () => {
 })
 
 client.on('message', (topic, message) => {
-  console.log(`Received [${topic}]:`, message.toString())
+  //console.log(`Received [${topic}]:`, message)
   // Bisa update state di sini atau pakai EventEmitter/context
 })
 

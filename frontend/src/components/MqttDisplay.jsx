@@ -7,7 +7,15 @@ const MqttDisplay = () => {
   useEffect(() => {
     const handleMessage = (topic, message) => {
       if (topic === 'mytopic/data') {
-        setData(message.toString())
+        try{
+          const payload = JSON.parse(message.toString());
+          //console.log("JSON payload:", payload);
+          const onlyMessage = payload.message;
+          setData(onlyMessage)
+        }catch (e){
+          console.error("Failed to parse JSON:", e);
+        }
+
       }
     }
 
