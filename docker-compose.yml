@@ -1,6 +1,14 @@
 #version: "3.8"
 
 services:
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001" # WebSocket, untuk React
+    volumes:
+      - ./mosquitto_config:/mosquitto/config
   backend:
     build: ./backend
     volumes:

@@ -6,7 +6,6 @@ import (
 	"mini-erp/backend/internal/auth"
 	"mini-erp/backend/internal/handlers"
 	"mini-erp/backend/internal/middleware"
-	"mini-erp/backend/internal/utils"
 	"net/http"
 	"os"
 	"time"
@@ -17,14 +16,11 @@ import (
 
 func main() {
 	//env
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("No .env file found")
-	}
+	_ = godotenv.Load()
 	env := os.Getenv("APP_ENV")
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // fallback default
+		port = "8080"
 	}
 	fmt.Printf("Running in %s mode on port %s\n", env, port)
 
@@ -37,22 +33,30 @@ func main() {
 	// Bungkus dengan middleware
 	handler := middleware.CorsMiddleware(mux)
 
+	//start server masuk goroutine karena blocking
+	go func() {
+		fmt.Printf("Server running on :%s\n", port)
+		if err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", port), handler); err != nil {
+			log.Fatal("HTTP Server error:", err)
+		}
+	}()
+
 	//mqtt
 	//mqtt.Connect()
 
-	//start server
-	fmt.Printf("Server running on :%s\n", port)
-	http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", port), handler)
-
-	//ip
-	ip := utils.GetLocalIP()
-
-	//local mqtt
-	opts := MQTT.NewClientOptions().AddBroker(fmt.Sprintf("tcp://%s:1883", ip)).SetClientID("go-client")
+	//setup mqtt
+	ip := "mqtt" //utils.GetLocalIP()
+	broker := fmt.Sprintf("tcp://%s:1883", ip)
+	opts := MQTT.NewClientOptions().AddBroker(broker).SetClientID("go-client")
 	client := MQTT.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
 	}
+
+	//Subscribe
+	client.Subscribe("frontend/cmd", 0, func(client MQTT.Client, msg MQTT.Message) {
+		fmt.Printf("Message from frontend: %s\n", msg.Payload())
+	})
 
 	//publish ke topic
 	go func() {
@@ -63,9 +67,5 @@ func main() {
 		}
 	}()
 
-	//Subscribe
-	client.Subscribe("frontend/cmd", 0, func(client MQTT.Client, msg MQTT.Message) {
-		fmt.Printf("Message from frontend: %s\n", msg.Payload())
-	})
 	select {}
 }
