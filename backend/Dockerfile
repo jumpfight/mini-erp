@@ -19,7 +19,7 @@ COPY . .
 RUN go mod download
 
 # Build binary
-RUN go build -o main .
+RUN go build -o main ./cmd/main.go
 
 # Jalankan binary
 # CMD ["./main"]

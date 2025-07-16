@@ -1,10 +1,21 @@
-version: "3.8"
+#version: "3.8"
 
 services:
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001" # WebSocket, untuk React
+    volumes:
+      - ./mosquitto_config:/mosquitto/config
+    networks:
+      - app-network
   backend:
     build: ./backend
     volumes:
       - ./backend:/app  # ini bikin kode lokal sinkron ke container
+    working_dir: /app
     command: ["air"] # untuk hot reload Go apps
     ports:
       - "8080:8080"
